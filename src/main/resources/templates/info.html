@@ -1,0 +1,205 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/include/head.html :: fragment-head}">
+</head>
+<link th:href="@{/css/info.css}" rel="stylesheet" type="text/css" />
+<body class="sb-nav-fixed">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <th:block th:replace="~{/include/header.html :: fragment-header}" />
+    <div class="container-fluid" style="padding-left: 0px !important; padding-right:0px !important">
+        <p class="title-wrap" style="font-weight: bold;">학생정보시스템</p>
+        <div style="width: 100%; border-top: 1px solid rgb(221, 221, 221); ">
+            <div class=" pl-3 mt-1 grid-1200" >
+                <p style="font-size: 12px;">학생정보시스템 》&nbsp;정보관리 》&nbsp;<span style="font-weight: bold; font-size: 12px;">개인정보</span></p>
+                <p class="mb-2" style="font-weight: bold; color: #222;">
+                    <i class="fa fa-chevron-circle-down" aria-hidden="true" style="color: #0476D9;"></i> 학생기초정보
+                </p>
+                <div class="breadcrumb mb-2 p-3" style="background: #FFF; border: 3px solid #ddd;">
+                    <div class="d-flex">
+                        <div class="d-flex">
+                            <div class="info_first_box">학번</div>
+                            <div class="info_box" th:text="${info.student_idx}">${info[0].student_idx}</div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="info_first_box" style="margin-left: 10px">성명</div>
+                            <div class="info_box" th:text="${info.student_name}">${info[0].student_name}</div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="info_first_box" style="margin-left: 10px">생년월일(성별)</div>
+                            <div class="info_box" th:text="${info.student_birthdate} + '(' + ${info.student_gender} + ')'">${info[0].student_birthdate}(${info[0].student_gender})</div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="info_first_box" style="margin-left: 10px">입학일자</div>
+                            <div class="info_box" th:text="${info.student_entrancedate}">${info[0].student_entrancedate}</div>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <div class="d-flex">
+                            <div class="info_first_box">소속 및 학년</div>
+                            <div class="info_box" style="width: 284px;" th:text="${info.department_name}">${info[0].department_name}</div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="info_box" th:text="${info.student_grade} + '학년'">${info[0].student_grade}학년</div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="info_first_box" style="margin-left: 10px">지도교수</div>
+                            <div class="info_box" th:text="${info.professor_name}">${info[0].professor_name}</div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="info_first_box" style="margin-left: 10px">졸업일자</div>
+                            <div class="info_box" th:text="${info.student_graduation_dete}">${info[0].student_graduation_dete}</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-4 mb-2" style="font-weight: bold; color: #222;">
+                    <i class="fa fa-chevron-circle-down" aria-hidden="true" style="color: #0476D9;"></i> 본인 현거주지 및 연락처 정보
+                </p>
+                <form th:action th:object="${info}" method="POST" onsubmit="return validate();">
+                    <div class="breadcrumb mb-2 p-3" style="background: #FFF; border: 3px solid #ddd;">
+                        <div class="d-flex" style="width: 100%;">
+                            <div class="d-flex">
+                                <div class="info_first_box">영문이름</div>
+                                <input class="info_box bgWhite" th:field="*{student_engname}"  name="student_engname">
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="d-flex">
+                                <div class="info_first_box">주소(우편번호)</div>
+                                <input class="info_box" style="width: 330px;" readonly="readonly" th:field="*{student_addr1}">
+                            </div>
+                            <div class="d-flex">
+                                <div class="info_box" id="addrBtn" onclick="execPostCode();">검색</div>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="d-flex">
+                                <div class="info_first_box">주소</div>
+                                <input class="info_box" id="addrinput" readonly="readonly" th:field="*{student_addr2}">
+                            </div>
+                            <div class="d-flex">
+                                <div class="info_first_box" style="margin-left: 10px">상세주소</div>
+                                <input class="info_box bgWhite" id="addrDetail" th:field="*{student_addr3}">
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="d-flex">
+                                <div class="info_first_box">전화번호</div>
+                                <input class="info_box bgWhite lgbox" th:field="*{student_phone2}">
+                            </div>
+                            <div class="d-flex">
+                                <div class="info_first_box" style="margin-left: 10px">휴대폰번호</div>
+                                <input class="info_box bgWhite lgbox" th:field="*{student_phone}">
+                            </div>
+                            <div class="d-flex">
+                                <div class="info_first_box" style="margin-left: 10px">비상연락처</div>
+                                <input class="info_box bgWhite lgbox" th:field="*{student_phone3}">
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="d-flex">
+                                <div class="info_first_box">주거래은행</div>
+                                <select name='student_bank'  class='info_box bgWhite lgbox' th:field="*{student_bank}">
+                                    <option value='SC제일은행'>SC제일은행</option>
+                                    <option value='경남은행'>경남은행</option>
+                                    <option value='광주은행'>광주은행</option>
+                                    <option value='국민은행'>국민은행</option>
+                                    <option value='기업은행'>기업은행</option>
+                                    <option value='농협중앙회'>농협중앙회</option>
+                                    <option value='농협회원조합'>농협회원조합</option>
+                                    <option value='대구은행'>대구은행</option>
+                                    <option value='부산은행'>부산은행</option>
+                                    <option value='새마을금고'>새마을금고</option>
+                                    <option value='신한은행'>신한은행</option>
+                                </select>
+                            </div>
+                            <div class="d-flex">
+                                <div class="info_first_box" style="margin-left: 10px">계좌번호</div>
+                                <input class="info_box bgWhite lgbox" th:field="*{student_banknum}">
+                            </div>
+                            <div class="d-flex">
+                                <div class="info_first_box" style="margin-left: 10px">예금주</div>
+                                <input class="info_box bgWhite lgbox" th:field="*{student_bankname}">
+                            </div>
+                        </div>
+                        <div class="d-flex mt-2">
+                            <div class="d-flex">
+                                <div class="info_first_box">이메일</div>
+                                <input class="info_box bgWhite emailInput" th:field="*{student_email}">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" th:field="*{student_idx}">
+                    <div class="insertBtnWrap">
+                        <button type="submit" class="info_box insertBtn" id="addrBtn">저장</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/js/myscripts.js}"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+
+    function validate(){
+        if(confirm("정보를 수정하시겠습니까?")) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    if(window.location.search == "?success"){
+        alert("수정이 완료되었습니다.")
+        location.href='/user'
+    }else if(window.location.search == "?error"){
+        alert("수정오류! 잠시 후 다시 시도해주세요")
+        location.href='/user'
+    }
+
+
+    function execPostCode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+                // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                if(fullRoadAddr !== ''){
+                    fullRoadAddr += extraRoadAddr;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                console.log(data.zonecode);
+                console.log(fullRoadAddr);
+
+
+                $("[name=student_addr1]").val(data.zonecode);
+                $("[name=student_addr2]").val(fullRoadAddr);
+                $("[name=student_addr3]").val("");
+                $("[name=student_addr3]").focus();
+
+            }
+        }).open();
+    }
+
+</script>
+</html>

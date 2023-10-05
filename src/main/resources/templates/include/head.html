@@ -1,0 +1,52 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="fragment-head">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>학사관리시스템</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+  <!--====== 커스텀 css ======-->
+  <link href="/css/Custom.css" th:href="@{/css/Custom.css}" rel="stylesheet" type="text/css" />
+  <link href="/admin2/css/sb-admin-2.min.css" th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+
+  <style>
+    .sidebar .nav-item .nav-link span{
+      color: #222 !important;
+    }
+    .sidebar-dark .sidebar-brand{
+      color: #222;
+    }
+
+    .bg-gradient-secondary{
+      background-color: #fff !important;
+      border-right: 1px solid rgb(221, 221, 221);
+    }
+    .sidebar-dark .nav-item .nav-link[data-toggle=collapse]::after{
+      color: #222
+    }
+
+    .sidebar {
+      width: 19rem!important;
+    }
+    .titleTxt{
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    .titleTxt span{
+      font-size: 20px;
+      font-style:italic;
+      color: red;
+    }
+  </style>
+</head>
+
+

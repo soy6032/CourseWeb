@@ -1,0 +1,103 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/include/head.html :: fragment-head}">
+</head>
+<body class="sb-nav-fixed">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <th:block th:replace="~{/include/header.html :: fragment-header}" />
+
+    <div class="container-fluid" style="padding-left: 0px !important; padding-right:0px !important">
+        <p class="title-wrap">학생정보시스템</p>
+        <div class="title-line">
+            <div class="pl-3 mt-1 grid-1200">
+                <p class="nav-grid-text">학생정보시스템 》&nbsp;정보관리 》&nbsp;<span>학사일정조회</span></p>
+                <form action="/sched" method="POST">
+                    <ol class="breadcrumb mb-2 p-3">
+                        <li class="breadcrumb-item active">
+                            년도
+                            <input type="number" th:value="${year}" name="year" style="width: 70px;">
+                            월
+                            <select name="month">
+                                <option th:each="i : ${#numbers.sequence(1, 12)}" th:value="${i}" th:text="${i} + '월'" th:selected="${i} == ${month}"></option>
+                            </select>
+                            <button type="submit"> 조회 </button>
+                        </li>
+                    </ol>
+                </form>
+                <div class="d-flex mt-3">
+                    <p class="mb-2" style="font-weight: bold; color: #222;">
+                        <i class="fa fa-chevron-circle-down" aria-hidden="true" style="color: #0476D9;"></i> 년도별 학사일정
+                    </p>
+                    <p class="ml-5 d-flex" >
+                    <p>주요학사일정 : </p> <div style="width: 70px; background-color: #ffc388; height: 20px; margin-left: 10px;"></div>
+                    </p>
+                </div>
+
+                <table style="width: 100%;" class="ctable">
+                    <thead>
+                    <tr>
+                        <td>NO</td>
+                        <td>기간</td>
+                        <td>학사일정</td>
+                        <td>관련대상</td>
+                        <td>업무구분</td>
+                        <td>시간</td>
+                        <td>비고</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="scheduleList, scheduleListState : ${scheduleLists}" th:classappend="${scheduleList.getSchedule_important()} == '1' ? 'pointCo'">
+                        <td th:text="${scheduleListState.count}"></td>
+                        <td th:text="${scheduleList.schedule_startdate} + ' ~ ' + ${scheduleList.schedule_enddate}"></td>
+                        <td th:text="${scheduleList.schedule_info}"></td>
+                        <td th:text="${scheduleList.schedule_target}"></td>
+                        <td th:text="${scheduleList.schedule_division}"></td>
+                        <td th:text="'시작일 ' + ${scheduleList.schedule_time} + ' ~ 종료일' + ${scheduleList.schedule_note}"></td>
+                        <td></td>
+                    </tr>
+<!--                    <c:forEach var="scheduleList" items="${scheduleList}" varStatus="var">-->
+<!--                        <tr class="<c:if test="${scheduleList.schedule_important  == 1}">pointCo</c:if>">-->
+<!--                        <td>${var.count }</td>-->
+<!--                        <td>${scheduleList.schedule_startdate} ~ ${scheduleList.schedule_enddate}</td>-->
+<!--                        <td>${scheduleList.schedule_info}</td>-->
+<!--                        <td>${scheduleList.schedule_target}</td>-->
+<!--                        <td>${scheduleList.schedule_division}</td>-->
+<!--                        <td>시작일 ${scheduleList.schedule_time} ~ 종료일 ${scheduleList.schedule_note}</td>-->
+<!--                        <td></td>-->
+<!--                        </tr>-->
+<!--                    </c:forEach>-->
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    $(".logoutBtn").click(function() {
+        if(confirm("로그아웃 하시겠습니까?")){
+            location.href="/logout";
+        }
+    })
+
+    var ahref = $(".collapse-item").attr("href");
+    var link = $(location).attr('pathname');
+    var last = link.substring(link.indexOf("/detail", 0));
+    var lastE = link.substring(link.indexOf("/Edit", 0));
+    var selUrl = link.replace(last, '');
+    var selUrlE = link.replace(lastE, '');
+
+    for (var i = 0; i <= $('.collapse-item').length; i++) {
+        if ($(".collapse-item").eq(i).attr("href") == link
+            || $(".collapse-item").eq(i).attr("href") == selUrl
+            || $(".collapse-item").eq(i).attr("href") == selUrlE) {
+            $(".collapse-item").eq(i).addClass('active');
+
+            $(".collapse-item").eq(i).parent().parent()
+                .addClass('show');
+        }
+    }
+</script>
+</html>

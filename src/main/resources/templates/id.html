@@ -1,0 +1,138 @@
+<html>
+<head>
+    <title>Login Page</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <style>
+        .error {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .msg {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        #login-box {
+            width: 300px;
+            padding: 20px;
+            margin: 100px auto;
+            background: #fff;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border: 1px solid #000;
+        }
+        .btn{
+            width:100%;
+            background: #FF7F50;
+            color:#fff;
+
+
+        }
+        .bg_img{
+            background:url('${pageContext.request.contextPath}/resources/assets/images/sante/login_main_bg.png');
+            background-size: cover;
+            width: 100%;
+        }
+        div.login{
+            position: absolute;
+            top :50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width: 100%;
+            max-width:400px;
+        }
+
+        .loginWrap{
+            width: 1200px;
+            height: 500px;
+            position: absolute;
+            top :42%;
+            left:50%;
+            transform:translate(-50%,-50%);
+
+        }
+        .wrap{
+            border: 10px solid #eeeeee;
+        }
+        .loginWrap div{
+            height: 100%;
+        }
+        .left{
+            width: 60%;
+            height: 100%;
+            background-image: url("${pageContext.request.contextPath}/resources/img/loginBg.jpg");
+            background-size: cover;
+        }
+        .right{
+            width: 40%;
+            height: 100%;
+            background-color: #41535d;
+        }
+
+        .right1 h1{
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            padding-top: 70px;
+            padding-left: 50px;
+        }
+        .right1{
+            height: 150px !important;
+        }
+        .right2{
+            background-color: #394a53;
+            height: 200px !important;
+            padding: 30px 50px !important;
+        }
+
+        .search p{
+            padding-right: 20px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .loginForm{
+            margin-top: 25px;
+        }
+        .titleTxt{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .titleTxt span{
+            font-style:italic;
+            font-size: 27px;
+            color: red;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+
+</head>
+<body class="bg_img">
+<div style="width: 500px; background-color: #394a53; height: 50px; color: #fff; text-align: center; line-height: 50px; font-weight: bold;">아이디 찾기</div>
+<p style="font-size: 12px; margin-top: 10px;padding-left: 10px;">*시스템에 등록된 정보와 일치하는 경우 아이디가 발송됩니다.</p>
+<p style="font-size: 14px; margin-top: 35px;padding-left: 25px;">성　　　명 <input type="text" style="width: 350px; height:26px; margin-left:20px; border: 1px solid #ddd;"></p>
+<p style="font-size: 14px; margin-top: 20px;padding-left: 25px;">이　메　일 <input type="text" style="width: 350px; height:26px; margin-left:20px; border: 1px solid #ddd;"></p>
+<div style="text-align: center; margin-top: 35px;">
+    <button style="width: 100px;height: 30px; line-height: 30px;">확인</button>
+</div>
+</body>
+</html>

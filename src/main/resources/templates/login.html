@@ -1,0 +1,175 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/include/head.html :: fragment-head}">
+</head>
+
+    <style>
+        .error {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .msg {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        #login-box {
+            width: 300px;
+            padding: 20px;
+            margin: 100px auto;
+            background: #fff;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border: 1px solid #000;
+        }
+        .btn{
+            width:100%;
+            background: #FF7F50;
+            color:#fff;
+
+
+        }
+        .bg_img{
+            background:url('/resources/assets/images/sante/login_main_bg.png');
+            background-size: cover;
+            width: 100%;
+        }
+        div.login{
+            position: absolute;
+            top :50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            width: 100%;
+            max-width:400px;
+        }
+
+        .loginWrap{
+            width: 1200px;
+            height: 500px;
+            position: absolute;
+            top :42%;
+            left:50%;
+            transform:translate(-50%,-50%);
+
+        }
+        .wrap{
+            border: 10px solid #eeeeee;
+        }
+        .loginWrap div{
+            height: 100%;
+        }
+        .left{
+            width: 60%;
+            height: 100%;
+            background-image: url("/img/loginBg.jpg");
+            background-size: cover;
+        }
+        .right{
+            width: 40%;
+            height: 100%;
+            background-color: #41535d;
+        }
+
+        .right1 h1{
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            padding-top: 70px;
+            padding-left: 50px;
+        }
+        .right1{
+            height: 150px !important;
+        }
+        .right2{
+            background-color: #394a53;
+            height: 200px !important;
+            padding: 30px 50px !important;
+        }
+
+        .search p{
+            padding-right: 20px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .loginForm{
+            margin-top: 25px;
+        }
+        .titleTxt{
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .titleTxt span{
+            font-style:italic;
+            font-size: 27px;
+            color: red;
+        }
+    </style>
+<body class="bg_img">
+<div class="loginWrap">
+    <p class="titleTxt"><span>B </span>I T 대학교</p>
+    <div class="wrap">
+        <div class="d-flex">
+            <div class="left"></div>
+            <div class="right">
+                <div class="right1">
+                    <h1>학생정보시스템</h1>
+                </div>
+                <div class="right2 p-3">
+                    <form name='loginForm pt-3' th:action method='POST'>
+                        <input class="form-control mb-2" type='text'  name='student_idx' placeholder="아이디" value="2023000001" style="background-color: #fff; border-radius: 0px; padding: 10px; font-size: 12px;">
+                        <input type='password' class="form-control" name="student_pw" placeholder="비밀번호" value="ww1120ww!" style="background-color: #fff; border-radius: 0px; padding: 10px; font-size: 12px;"/>
+                        <button type="submit" class="btn mt-2" style="background: linear-gradient(#ffffff,#c8c8c8); color: #000; font-size: 12px; border:0px; font-weight: bold;">로그인</button>
+                    </form>
+                    <div class="d-flex search">
+                        <p onclick="idPop()" style="cursor: pointer; height: 25px;">아이디찾기</p>
+                        <p onclick="pwPop()" style="cursor: pointer; height: 25px;">비밀번호찾기</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+
+    if(window.location.search == "?error"){
+        alert("아이디 비밀번호를 확인해주세요")
+        location.href='/login'
+    }
+
+    function idPop(){
+        var _width = '500';
+        var _height = '270';
+
+        // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+        var _left = Math.ceil(( window.screen.width - _width )/2);
+        var _top = Math.ceil(( window.screen.height - _height )/2);
+
+        window.open('/id', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+    }
+
+    function pwPop(){
+        var _width = '500';
+        var _height = '270';
+
+        // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+        var _left = Math.ceil(( window.screen.width - _width )/2);
+        var _top = Math.ceil(( window.screen.height - _height )/2);
+
+        window.open('/pw', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+    }
+</script>
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.CourseDao">
+    <select id="courseRegistList" parameterType="CourseDTO" resultType="CourseDTO">
+        SELECT * FROM bachelor.subject
+        join professor on subject_professor_idx = professor_idx
+        where subject_department_idx = #{subject_department_idx} and subject_grade = #{subject_grade} and subject_type = #{subject_type} AND subject_idx
+        NOT IN(
+        SELECT courseregist_subject_idx FROM bachelor.courseregist
+        where courseregist_student_idx = #{courseregist_student_idx}
+        )
+    </select>
+    <!-- 수강 시간표 -->
+    <select id="courseDetail" parameterType="CourseDTO" resultType="CourseDTO">
+        SELECT * FROM bachelor.subject
+        join subject_detail on subject_idx = subject_detail_subject_idx
+        where subject_department_idx = #{subject_department_idx} and subject_grade = #{subject_grade} and subject_type = #{subject_type}
+        group by subject_idx, subject_detail_week;
+    </select>
+
+    <!-- 수강 시간표 -->
+    <select id="courseDetail2" parameterType="CourseDTO" resultType="CourseDTO">
+
+        SELECT *, group_concat(subject_detail_period ORDER BY subject_detail_period ASC) as subject_detail_period_total From bachelor.subject
+        join subject_detail on subject_idx = subject_detail_subject_idx
+        where subject_department_idx = #{subject_department_idx} and subject_grade = #{subject_grade} and subject_type = #{subject_type}
+        group by subject_idx, subject_detail_week
+        order by subject_idx,
+        CASE WHEN subject_detail_week = '일' THEN 0
+            WHEN subject_detail_week = '월' THEN 1
+            WHEN subject_detail_week = '화' THEN 2
+            WHEN subject_detail_week = '수' THEN 3
+            WHEN subject_detail_week = '목' THEN 4
+            WHEN subject_detail_week = '금' THEN 5
+            WHEN subject_detail_week = '토' THEN 6
+        END;
+    </select>
+
+    <!-- 수강신청 -->
+    <select id="courseRegist" parameterType="CourseDTO" resultType="CourseDTO">
+        insert into `courseregist`(courseregist_student_idx, courseregist_subject_idx)
+        value(#{courseregist_student_idx}, #{courseregist_subject_idx});
+    </select>
+
+    <!-- 수강신청내역 -->
+    <select id="myCourse" parameterType="CourseDTO" resultType="CourseDTO">
+        SELECT * FROM bachelor.courseregist
+        join subject on courseregist_subject_idx = subject_idx
+        join professor on subject_professor_idx = professor_idx
+        where subject_department_idx = #{subject_department_idx} and subject_grade = #{subject_grade} and subject_type = #{subject_type} and courseregist_student_idx = #{courseregist_student_idx};
+    </select>
+
+    <!-- 수강신청내역 삭제 -->
+    <select id="courseDelete" parameterType="String" resultType="CourseDTO">
+        DELETE FROM bachelor.courseregist WHERE courseregist_idx = #{courseregist_idx};
+    </select>
+
+    <!-- 수강 시간표 -->
+    <select id="courseSchedule" parameterType="CourseDTO" resultType="CourseDTO">
+        SELECT *,
+           CASE WHEN subject_detail_week = '월' THEN 2
+                WHEN subject_detail_week = '화' THEN 3
+                WHEN subject_detail_week = '수' THEN 4
+                WHEN subject_detail_week = '목' THEN 5
+                WHEN subject_detail_week = '금' THEN 6
+           END as subject_detail_week_num
+        FROM bachelor.courseregist
+        join subject on courseregist_subject_idx =subject_idx
+        join subject_detail on courseregist_subject_idx = subject_detail_subject_idx
+        join professor on subject_professor_idx = professor_idx
+        where subject_department_idx = #{subject_department_idx} and subject_grade = #{subject_grade} and subject_type = #{subject_type} and courseregist_student_idx = #{courseregist_student_idx}
+        order by courseregist_idx;
+    </select>
+</mapper>
+

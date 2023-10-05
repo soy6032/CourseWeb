@@ -1,0 +1,484 @@
+@charset "UTF-8";
+
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+/*********************************************기본*************************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+
+*{
+	color: #222;
+	font-size: 14px;
+}
+
+.bg-gradient-secondary{
+	    background-color: #064465 !important;
+	    background-image: none !important;
+}
+
+.sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
+.sidebar .nav-item .collapsing .collapse-inner .collapse-item.active{
+	background-color: #eaecf4 !important;
+}
+
+.logoutBtn2{
+	font-size: 12px; font-weight: bold; width: 70px; line-height:24px; height: 25px; background-color: #0476D9; color: #fff; border-radius: 25px; margin-bottom: 0px; cursor: pointer;
+}
+
+	/* all background color  */
+
+#wrapper #content-wrapper {
+	background-color: #fff !important;
+}
+
+.sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
+	.sidebar .nav-item .collapsing .collapse-inner .collapse-item.active {
+	font-weight: normal;
+	color: #303ab3 !important; 
+}
+
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+/*********************************************기본*************************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+
+/********header******/
+.shadow-box{
+	width:200px; height:5px; background: linear-gradient(#ffffff,#c8c8c8);opacity:0.7; margin: 0 auto;
+}
+
+.login_info{
+	width: 200px; margin: 0 auto; padding: 0px 10px; height: 50px;
+}
+
+.login-info-box{
+	width: 200px;
+}
+
+.login-info-box-name{
+	text-align: left; font-size: 14px; font-weight: 500; line-height:23px; margin-bottom: 0px;
+}
+
+.logoutBtn{
+	font-size: 12px; font-weight: bold; width: 70px; line-height:24px; height: 25px; background-color: #0476D9; color: #fff; border-radius: 25px; margin-bottom: 0px; cursor: pointer;
+}
+
+.nav-link{
+	padding: 12px 20px !important; padding-bottom: 0px !important; width: 100% !important;
+}
+
+.folder-icon{
+	color: #EADA4D !important;
+}
+
+.rounded{
+	margin-bottom: 0px !important;
+}
+
+
+
+
+
+
+.svg-inline--fa.fa-w-16 {
+	width: 1em;
+}
+.svg-inline--fa.fa-w-14 {
+	width: 0.875em;
+}
+.svg-inline--fa {
+	display: inline-block;
+	font-size: inherit;
+	height: 1em;
+	overflow: visible;
+	vertical-align: -0.125em;
+}
+
+.title-wrap{
+	width: 120px;
+	background-color: #0476D9;
+	height: 50px;
+	margin-bottom: 0px;
+	border-radius: 10px 10px 0px 0px;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+}
+.pointer{
+	cursor:pointer;
+}
+.ctable{
+	font-size: 13px !important;
+	text-align: center;
+}
+.ctable thead{
+	background-color: #0476D9;
+	color: #fff;
+	font-weight: bold;
+	padding: 5px 0px;
+}
+.ctable thead tr td{
+	padding: 3px 0px;
+	color: #fff
+}
+.ctable thead tr td:not(:last-of-type){
+	border-right: 1px solid #000;
+}
+
+.ctable tbody tr{
+	background-color: #e8e8e8;
+}
+
+.ctable tbody tr td{
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #fff;
+	padding: 3px 0px;
+	color: #222;
+}
+.pointCo{
+	background-color: #ffc388 !important;
+}
+
+.title-wrap{
+	font-weight: bold;
+}
+
+.title-line{
+	width: 100%; border-top: 1px solid rgb(221, 221, 221);
+}
+
+.grid-1200{
+	width: 1200px;
+}
+
+.nav-grid-text{
+	font-size: 12px;
+}
+
+.nav-grid-text span{
+	font-weight: bold; font-size: 12px;
+}
+
+.breadcrumb{
+	background: #eaf6ff !important; border: 1px solid #81c0f0;
+}
+
+.breadcrumb-item{
+	font-size: 12px; color: #222 !important;
+}
+
+.breadcrumb-item input ,.breadcrumb-item select{
+	height: 23px; width: 50px;
+}
+
+.breadcrumb-item button{
+	border: 1px solid #222; width: 50px; height: 23px; margin-left: 5px;
+}
+
+
+
+
+
+
+
+	/**********************************************************************************************************/
+/**********************************************************************************************************/
+/******************************************반응형***********************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+
+/* margin, padding */
+.margin-top_100 {
+	margin-top: 100px;
+}
+.margin-top_10{
+	margin-top: 10px;
+}
+.margin-top_20{
+	margin-top: 20px;
+}
+.margin-top_30{
+	margin-top: 30px;
+}
+.margin-top_40{
+	margin-top: 40px;
+}
+.margin-top_50{
+	margin-top: 50px;
+}
+.margin-top_60{
+	margin-top: 60px;
+}
+.margin-top_70{
+	margin-top: 70px;
+}
+.margin-top_80{
+	margin-top: 80px;
+}
+
+
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+/*******************************************반응형********************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+
+
+
+@media ( min-width : 1281px) {
+	/***********************************************1281***********************************************/
+}
+/*
+##Device = 랩탑, 데스크탑
+*/
+@media ( min-width : 1025px) and (max-width: 1280px) {
+	/***********************************************1025-1280***********************************************/
+}
+/*
+##Device = Tablets, Ipads (portrait),
+##Device = 태블릿, 아이패드(세로),
+*/
+@media ( min-width : 768px) and (max-width: 1024px) {
+	/***********************************************768-1024***********************************************/
+	/*
+##Device = Tablets, Ipads (landscape)
+##Device = 태블릿, 아이패드(가로)
+*/
+	@media ( min-width : 768px) and (max-width: 1024px) and (orientation:
+		landscape) {
+		/***********************************************768-1024***********************************************/
+	}
+	/*
+##Device = Low Resolution Tablets, Mobiles (Landscape)
+##Device = 저해상도 태블릿, 모바일(가로)
+*/
+	@media ( min-width : 481px) and (max-width: 767px) {
+		/***********************************************481-767***********************************************/
+	}
+}
+/*
+##Device = Most of the Smartphones Mobiles (Portrait)
+##Device = 대부분의 스마트폰 모바일 기기(세로)
+*/
+@media ( min-width : 321px) and (max-width: 480px) {
+	/***********************************************321-480***********************************************/
+}
+
+@media ( min-width : 180px) and (max-width: 320px) {
+	/***********************************************180-320***********************************************/
+}
+
+
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+/*********************************************CSS*************************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+/**********************************************************************************************************/
+
+/* 파일업로드 커스텀 */
+form input::file-selector-button { display: none; }
+
+
+/* 기본 커스텀 버튼 (등록,삭제,수정)*/
+.default-btn {
+	font-size: 16px;
+	color: #ffffff;
+	padding: 15px 115px;
+	line-height: 1;
+	-webkit-transition: all ease 0.5s;
+	transition: all ease 0.5s;
+	text-align: center;
+	background-color: #8cd2f5;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	display: inline-block;
+	border-radius: 5px;
+	border: 1px solid;
+}
+.default-btn2 {
+	font-size: 16px;
+	color: #ffffff;
+	padding: 8px 38px;
+	line-height: 1;
+	-webkit-transition: all ease 0.5s;
+	transition: all ease 0.5s;
+	text-align: center;
+	background-color: #8cd2f5;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	display: inline-block;
+	border-radius: 5px;
+	border: 1px solid;
+}
+
+/*버튼 반응형*/
+@media only screen and (max-width: 767px) {
+	.default-btn {
+		font-size: 15px;
+		padding: 10px 75px;
+		border: 1px solid;
+	}
+	.default-btn2 {
+		font-size: 15px;
+		padding: 10px 37px;
+		border: 1px solid;
+	}
+}
+
+/* 등록,수정, 상세페이지 타이틀  */
+.subtitles {
+	   width: 120px;
+	   height: 40px;
+    line-height: 2.4;
+}
+/* 등록,수정, 상세페이지 입력부분  */
+.subtitles2 input, .subtitles2 select {
+	   height: 100%;
+	   padding: 0px 10px;
+	   width:100%;
+	   outline:none;
+}
+.subtitles2 {
+	   height: 40px;
+	   flex: 1;
+	   line-height: 2.4;
+}
+/* 페이지 타이틀   */
+.title {
+	  font-size:25px;
+	  font-weight:500;
+}
+.title_hr{
+	width: 100%;
+    height: 7px;
+    border: 0;
+    background: #ddd;
+}
+/* 등록,수정 셀렉트박스 커스텀   */
+.selectbx{
+	outline: none;
+    padding: 3px;
+    border-color: #ddd;
+    color: gray;
+}
+
+/* 파일 선택 버튼 커스텀   */
+.img_btn{
+	    padding: 0px 30px !important;
+	    margin-left: 10px;
+	        height: 40px;
+}
+
+/* .card-body_text div{
+	    padding: 5px 0px;
+}
+.card-body_text div:nth-child(3){
+	  height:60px
+}
+.state_box{
+	width: 50%;
+    margin: 0 auto;
+}
+.state{
+    background: #358ee9;
+    border-radius: 10px;
+    color:#fff;
+} */
+
+
+/* 데이터테이블 페이징 버튼 커스텀*/
+.paginate_button {
+	padding: 10px ;
+}
+
+/* 에리플 상태 span 커스텀*/
+.status_display {
+	border-radius:7px;
+	padding : 3px 0px ;
+	 color:#fff ;
+	width: 110px; 
+	display: inline-block; 
+	text-align: center;
+	font-size: 13px;
+}
+
+
+
+
+
+/********************************************************/
+
+
+#modalwrap{
+	background-color: #f8f8f8; width: 500px; height: 280px; position: absolute; top: 50%; left: 55%; transform: translate(-50%, -50%); border-radius: 20px; z-index: 999; display: none;
+}
+
+#modalwrap2{
+	background-color: #f8f8f8; width: 500px; height: 280px; position: absolute; top: 50%; left: 55%; transform: translate(-50%, -50%); border-radius: 20px; z-index: 999; display: none;
+}
+
+.modalwrapDiv2{
+	width: 100%; padding: 30px; height: 100%
+}
+.modalCloseP2{
+	text-align: right; cursor: point;
+}
+
+#modalback{
+	width: 100%; height: 100%; background-color: rgba(0,0,0,0.3); position: absolute; top: 0px; display: none;
+}
+
+#modalback2{
+	width: 100%; height: 100%; background-color: rgba(0,0,0,0.3); position: absolute; top: 0px; display: none;
+}
+
+
+
+
+.infoTable2{
+	margin: 0 auto;
+}
+.infoTable2 tr{
+	height: 25px;	
+}
+.infoTable2 tr td{
+	text-align: left;
+}
+
+.infoTable2 tr td input{
+	width: 100%; height: 40px; border: 1px solid #ddd; padding-left: 10px;
+}
+
+.ok_btn{
+	    padding: 20px 200px !important;
+}
+
+
+#modalwrap3{
+	background-color: #f8f8f8; width: 500px; height: 280px; position: absolute; top: 50%; left: 55%; transform: translate(-50%, -50%); border-radius: 20px; z-index: 999; display: none;
+}
+.modalwrapDiv3{
+	width: 100%; padding: 30px; height: 100%
+}
+
+
+#usermodalwrap{
+	background-color: #f8f8f8; width: 500px; height: 280px; position: absolute; top: 50%; left: 55%; transform: translate(-50%, -50%); border-radius: 20px; z-index: 999; display: none;
+}
+.userModalwrapDiv{
+   width: 100%; padding: 30px; height: 100%
+}
+.usermodalCloseP{
+	text-align: right; cursor: point;
+}
+
+#usermodalback{
+	width: 100%; height: 100%; background-color: rgba(0,0,0,0.3); position: absolute; top: 0px; display: none;
+}

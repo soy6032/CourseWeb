@@ -1,0 +1,99 @@
+.svg-inline--fa.fa-w-16 {
+    width: 1em;
+}
+.svg-inline--fa.fa-w-14 {
+    width: 0.875em;
+}
+.svg-inline--fa {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+}
+
+.title-wrap{
+    width: 120px;
+    background-color: #0476D9;
+    height: 50px;
+    margin-bottom: 0px;
+    border-radius: 10px 10px 0px 0px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+}
+.pointer{
+    cursor:pointer;
+}
+.ctable{
+    font-size: 13px !important;
+    text-align: center;
+}
+.ctable thead{
+    background-color: #0476D9;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 0px;
+}
+.ctable thead tr td{
+    padding: 3px 0px;
+    color: #fff
+}
+.ctable thead tr td:not(:last-of-type){
+    border-right: 1px solid #000;
+}
+
+.ctable tbody tr{
+    background-color: #e8e8e8;
+}
+
+.ctable tbody tr td{
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
+    padding: 3px 0px;
+    color: #222;
+}
+.pointCo{
+    background-color: #ffc388 !important;
+}
+
+.info_box{
+    font-size:12px; line-height:23px; width: 149px; height: 25px; background: #f1f1f1; border: 1px solid #cccccc; padding-left: 5px; text-align: left; color: #222; font-weight: bold; margin-left: 8px; font-weight: normal;
+}
+
+.info_first_box{
+    font-size:12px; line-height:23px; width: 125px; height: 25px; background: #eaf6ff; border: 1px solid #c6e7ff; padding-right: 5px; text-align: right; color: #222; font-weight: bold;
+}
+#addrBtn{
+    background: linear-gradient(#ffffff,#f8f8f8);
+    width:50px;
+    text-align:center;
+    border-radius: 4px;
+    padding-left: 0px !important;
+    cursor: pointer;
+}
+#addrinput{
+    width: 497px;
+}
+#addrDetail{
+    width: 381px;
+}
+.bgWhite{
+    background-color: #fff !important;
+}
+.lgbox{
+    width: 245px;
+}
+.emailInput{
+    width: 1021px;
+}
+.insertBtnWrap{
+    text-align: center;
+}
+.insertBtn{
+    margin-top:20px;
+    width: 100px !important;
+    height:35px;
+    padding-right: 0px;
+    font-weight: bold;
+}

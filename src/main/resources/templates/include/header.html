@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" th:fragment="fragment-header">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-text mx-3" style="font-weight: 400;">
+            <p class="titleTxt"><span>B </span>I T 대학교</p>
+        </div>
+    </a>
+    <div class="shadow-box"></div>
+    <div class="sidebar-brand d-flex align-items-center justify-content-center login_info">
+        <div class="d-flex justify-content-between login-info-box">
+            <p class="login-info-box-name">
+                <i class="fa fa-user-circle" aria-hidden="true"></i> <span class="pl-2" th:text="${session.user.student_name}">홍길동</span>
+<!--                -->
+            </p>
+            <p class="logoutBtn" style="">로그아웃</p>
+        </div>
+    </div>
+    <div class="shadow-box"></div>
+
+    <!-- <div class="sidebar-heading">Interface</div> -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed main-nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" id="accordionSidebar1" >
+            <i class="fa fa-folder-open folder-icon" aria-hidden="true"></i>
+            <span style="font-size: 14px;">정보관리</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar1">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item " href="/sched" style="font-size: 12px;">ㄴ 학사일정</a>
+                <a class="collapse-item " href="/info" style="font-size: 12px;">ㄴ 개인정보</a>
+                <a class="collapse-item " href="/pwch" style="font-size: 12px;">ㄴ 비밀번호번경</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo2" id="accordionSidebar2" >
+            <i class="fa fa-folder-open folder-icon" aria-hidden="true"></i>
+            <span style="font-size: 14px;">수강관리</span>
+        </a>
+        <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar2">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item " href="/courseRegist" style="font-size: 12px;">ㄴ 수강신청</a>
+                <a class="collapse-item " href="/myCourse" style="font-size: 12px;">ㄴ 수강내역조회</a>
+            </div>
+        </div>
+    </li>
+
+</ul>
+

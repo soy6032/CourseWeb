@@ -1,0 +1,121 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/include/head.html :: fragment-head}">
+</head>
+<link th:href="@{/css/pwch.css}" rel="stylesheet" type="text/css" />
+<body class="sb-nav-fixed">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <th:block th:replace="~{/include/header.html :: fragment-header}" />
+    <div class="container-fluid" style="padding-left: 0px !important; padding-right:0px !important">
+        <p class="title-wrap" style="font-weight: bold;">학생정보시스템</p>
+        <div style="width: 100%; border-top: 1px solid rgb(221, 221, 221); ">
+            <div class=" pl-3 mt-1 grid-1200">
+                <p style="font-size: 12px;">학생정보시스템 》&nbsp;정보관리 》&nbsp;<span style="font-weight: bold; font-size: 12px;">비밀번호변경</span></p>
+                <p class="mb-2" style="font-weight: bold; color: #222;">
+                    <i class="fa fa-chevron-circle-down" aria-hidden="true" style="color: #0476D9;"></i> 비밀번호 변경
+                </p>
+                <div class="breadcrumb mb-2 p-3" style="background: #FFF; border: 3px solid #ddd; width: 440px;">
+                    <div class="d-flex">
+                        <div class="d-flex">
+                            <div class="info_first_box">학번</div>
+                            <div class="info_box" th:text="${session.user.student_idx}">${info[0].student_idx}</div>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-2 mb-2">
+                        <div class="d-flex">
+                            <div class="info_first_box">성명</div>
+                            <div class="info_box" th:text="${session.user.student_name}">${info[0].student_name}</div>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-4">
+                        <div class="d-flex">
+                            <div class="info_first_box">현재 비밀번호</div>
+                            <input class="info_box bgWhite" type="password" name="pw">
+                        </div>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <div class="d-flex">
+                            <div class="info_first_box">새 비밀번호</div>
+                            <input class="info_box bgWhite" type="password" name="pw1">
+                        </div>
+                    </div>
+                    <div class="d-flex mt-2">
+                        <div class="d-flex">
+                            <div class="info_first_box">새 비밀번호 확인</div>
+                            <input class="info_box bgWhite" type="password" name="pw2">
+                        </div>
+                    </div>
+                    <div style="color: #ee2f2d; margin-top: 20px; font-size: 12px;">
+                        ※ 변경할 비밀번호를 재입력하여 주십시오<br>
+                        　 8~15자리, 영문자, 숫자, 특수문자를 포함하여야 합니다.
+                    </div>
+                </div>
+                <div class="insertBtnWrap" style="width: 440px;">
+                    <button class="info_box insertBtn" id="addrBtn">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/js/myscripts.js}"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+
+    function validate(){
+        if(confirm("정보를 수정하시겠습니까?")) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    $("#addrBtn").on('click',function(){
+        var password1RegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
+        if($('[name="pw"]').val() =="") {
+            alert("현재 비밀번호를 입력해주세요");
+            $('[name="pw"]').focus();
+        }
+        else if($('[name="pw1"]').val() =="") {
+            alert("새 비밀번호를 입력해주세요");
+            $('[name="pw1"]').focus();
+        }
+        else if($('[name="pw2"]').val() =="") {
+            alert("새 비밀번호 확인을 입력해주세요");
+            $('[name="pw2"]').focus();
+        }
+        else if($('[name="pw1"]').val() != $('[name="pw2"]').val()) {
+            alert("변경할 비밀번호가 같지 않습니다. 다시 입력 바랍니다.");
+            $('[name="pw1"]').focus();
+        }
+        else if (!password1RegExp.test($('[name="pw1"]').val())) {
+            alert("8~15자리, 영문자, 숫자, 특수문자를 포함하여야 합니다.");
+            $('[name="pw1"]').focus();
+        }
+        else if(confirm("비밀번호를 변경하시겠습니까?")){
+            var datas = {pw :  $('[name="pw"]').val(), pw1 :  $('[name="pw1"]').val(), pw2 :  $('[name="pw2"]').val()}; //컨트롤로 전송할 데이터
+            $.ajax({
+                url: "/pwch",
+                type:"POST",
+                data: datas,
+                success:function(data){
+                    console.log(data); // 결과 : 1
+                    if(data == 1){
+                        alert("입력한 구패스워드와 시스템의 패스워드가 일치하지 않습니다.")
+                        $('[name="pw"]').focus();
+                    }else if(data == 0){
+                        alert("비밀번호 변경이 완료되었습니다.")
+                        location.href='/pwch'
+                    }else if(data == 2){
+                        alert("변경 오류! 잠시후 다시 시도해주세요.")
+                    }
+                },
+                error: function(request,status,error) {
+                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+            })
+        }
+        /*  */
+    })
+</script>
+</html>

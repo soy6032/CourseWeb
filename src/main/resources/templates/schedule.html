@@ -1,0 +1,137 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<style>
+
+    @media print {
+        body {-webkit-print-color-adjust:exact;}
+        #pdfBtn{display: none;}
+    }
+    .ctable{
+        font-size: 13px !important;
+        text-align: center;
+        margin-bottom: 100px;
+    }
+    .ctable thead{
+        background-color: #0476D9;
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 0px;
+    }
+    .ctable thead tr td{
+        padding: 3px 0px;
+        color: #fff
+    }
+    .ctable thead tr td:not(:last-of-type){
+        border-right: 1px solid #000;
+    }
+
+    .ctable tbody tr{
+        background-color: #e8e8e8;
+    }
+
+    .ctable tbody tr td{
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #fff;
+        padding: 0px 0px;
+        color: #222;
+        font-size: 12px !important;
+        height: 65px !important;
+    }
+    .ctable{
+        font-size: 13px !important;
+        text-align: center;
+    }
+    .ctable thead{
+        background-color: #0476D9;
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 0px;
+    }
+    .ctable thead tr td{
+        padding: 3px 0px;
+        color: #fff
+    }
+    .ctable thead tr td:not(:last-of-type){
+        border-right: 1px solid #000;
+    }
+
+    .ctable tbody tr{
+        background-color: #e8e8e8;
+    }
+
+    .ctable tbody tr td{
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #fff;
+        padding: 3px 0px;
+        color: #222;
+    }
+
+</style>
+
+
+<p style="width: 700px; text-align: left;" id="pdfBtn">
+    <input type = "button" OnClick="print(document.getElementById('printArea').innerHTML)" value="출력하기▼" />
+</p>
+<div style="width: 700px;" id="printArea">
+    <p style="text-align: center; font-size: 25px">강의 시간표</p>
+    <table style="width: 100%;margin-top: 20px;" class="ctable" id="timetable">
+        <thead>
+        <tr>
+            <td width="">교시</td>
+            <td width="17%">월</td>
+            <td width="17%">화</td>
+            <td width="17%">수</td>
+            <td width="17%">목</td>
+            <td width="17%">금</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hour : ${#numbers.sequence(1, 9)}">
+            <td th:text="${hour}"></td>
+            <td><!-- 월요일 시간표 입력 --></td>
+            <td><!-- 화요일 시간표 입력 --></td>
+            <td><!-- 수요일 시간표 입력 --></td>
+            <td><!-- 목요일 시간표 입력 --></td>
+            <td><!-- 금요일 시간표 입력 --></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+
+    $.ajax({
+        url: "/scheduleData",
+        type:"GET",
+        success:function(data){
+            for(var i = 0; i < data.length; i++){
+                var text = data[i].subject_name+'</br>';
+                    text += data[i].subject_professor_idx+'</br>';
+                    text += data[i].subject_classroom
+                var rowIdx = Number(data[i].subject_detail_period);
+                var colIdx = Number(data[i].subject_detail_week_num) - 1;
+                var cellSelector = "#timetable tr:eq(" + rowIdx + ") td:eq(" + colIdx + ")";
+                $(cellSelector).append(text);
+            }
+        },
+        error: function(request,status,error) {
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    })
+
+    function content_print(){
+        var con = document.getElementById("pdfBtn");
+        con.style.display = 'none';
+        var initBody = document.body.innerHTML;
+        window.onbeforeprint = function(){
+            document.body.innerHTML = document.getElementById('printArea').innerHTML;
+        }
+        window.onafterprint = function(){
+            document.body.innerHTML = initBody;
+        }
+        window.print("강의시간표");
+    }
+</script>
+
+</html>
